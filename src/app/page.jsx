@@ -1,7 +1,8 @@
 import HeroSection from "@/components/HeroSection";
 import PopularProducts from "@/components/PopularProducts";
 import products from "@/data/products.json";
-
+import SummerTips from "@/components/SummerTips";
+import TopBrands from "@/components/TopBrands";
 
 export default function HomePage() {
   const popularProducts = products.slice(0, 3);
@@ -26,7 +27,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      
+      <SummerTips />
+      <TopBrands/>
 
     </main>
   );
