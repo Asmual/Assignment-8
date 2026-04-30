@@ -7,5 +7,5 @@ git remote add origin https://github.com/Asmual/Assignment-8.git
 git push -u origin main
 
 git add .
-git commit -m "Login Page, Register page & Hero Section Complete"
+git commit -m "Login & Register page & Hero Section Complete"
 git push -u origin main

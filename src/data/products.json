@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "name": "Classic Black Sunglasses",
+    "category": "Accessories",
+    "price": 750,
+    "rating": 4.6,
+    "stock": 40,
+    "image": "/images/sunglasses.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Summer Beach Cap",
+    "category": "Accessories",
+    "price": 350,
+    "rating": 4.4,
+    "stock": 60,
+    "image": "/images/cap.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Comfort Summer Sandals",
+    "category": "Shoes",
+    "price": 1400,
+    "rating": 4.5,
+    "stock": 35,
+    "image": "/images/sandals.jpg"
+
+    
+  },
+  {
+    "id": 4,
+    "name": "Insulated Water Bottle",
+    "category": "Accessories",
+    "price": 420,
+    "rating": 4.7,
+    "stock": 70,
+    "image": "/images/water-bottle.jpg"
+
+    
+  },
+  {
+    "id": 5,
+    "name": "Portable Folding Umbrella",
+    "category": "Accessories",
+    "price": 550,
+    "rating": 4.3,
+    "stock": 45,
+    "image": "/images/umbrella.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Travel Tote Bag",
+    "category": "Bag",
+    "price": 1200,
+    "rating": 4.5,
+    "stock": 30,
+    "image": "/images/bag.jpg"
+  }
+]

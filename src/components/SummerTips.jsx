@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UpdateProfilePage = () => {
+const SummerTips = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const UpdateProfilePage = () => {
   );
 };
 
-export default UpdateProfilePage;
+export default SummerTips;
