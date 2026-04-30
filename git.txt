@@ -1,11 +1,11 @@
 echo "# Assignment-8" >> README.md
 git init
 git add .
-git commit -m "Setup Next js Full ENV"
+git commit -m "Important Correction check work or not"
 git branch -M main
 git remote add origin https://github.com/Asmual/Assignment-8.git
 git push -u origin main
 
 git add .
-git commit -m "Pupolar section and footer Complete"
+git commit -m "Summer Tips & Top Brand Section Complete"
 git push -u origin main
