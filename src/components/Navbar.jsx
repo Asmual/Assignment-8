@@ -1,14 +1,32 @@
 "use client";
 
-import Image from "next/image";
+
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { authClient } from "@/lib/auth-client";
 
 const Navbar = () => {
-  const user = null;
+  const [user, setUser] = useState(null);
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const getSession = async () => {
+      const session = await authClient.getSession();
+      if (session?.data?.user) {
+        setUser(session.data.user);
+      }
+    };
+    getSession();
+  }, [pathname]);
+
+  const handleLogout = async () => {
+    await authClient.signOut();
+    setUser(null);
+    router.push("/");
+  };
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -26,7 +44,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-
+        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
             <Link
@@ -42,23 +60,30 @@ const Navbar = () => {
           ))}
         </div>
 
-
+        {/* Desktop Auth Buttons */}
         <div className="hidden md:flex items-center gap-3">
           {user ? (
             <>
               <Link href="/my-profile">
                 <div className="w-10 h-10 rounded-full border-2 border-pink-500 overflow-hidden cursor-pointer hover:scale-105 transition-all">
-                  <Image
-                    src={user.image || "/images/my-profile.PNG"}
-                    alt={user.name || "Profile"}
-                    width={40}
-                    height={40}
-                    className="w-full h-full object-cover"
-                  />
+                  {user.image ? (
+                    <image
+                      src={user.image}
+                      alt={user.name || "Profile"}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-pink-500/20 flex items-center justify-center text-pink-500 font-bold text-lg">
+                      {user.name?.charAt(0).toUpperCase()}
+                    </div>
+                  )}
                 </div>
               </Link>
               <div className="w-px h-5 bg-white/10" />
-              <button className="px-4 py-2 rounded-lg text-sm font-medium bg-[#ff4d6d]/10 border border-[#ff4d6d]/30 text-pink-500 hover:bg-[#ff4d6d]/20 transition-all">
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 rounded-lg text-sm font-medium bg-[#ff4d6d]/10 border border-[#ff4d6d]/30 text-pink-500 hover:bg-[#ff4d6d]/20 transition-all"
+              >
                 Logout
               </button>
             </>
@@ -80,7 +105,7 @@ const Navbar = () => {
           )}
         </div>
 
-
+        {/* Mobile Hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-white/5 transition-all"
@@ -91,7 +116,7 @@ const Navbar = () => {
         </button>
       </div>
 
-
+      {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden bg-[#0d0d35] border-t border-white/5 px-6 py-4 flex flex-col gap-4">
           {navLinks.map((link) => (
@@ -113,17 +138,24 @@ const Navbar = () => {
               <>
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-full border-2 border-pink-500 overflow-hidden">
-                    <Image
-                      src={user.image || "/images/my-profile.PNG"}
-                      alt={user.name || "Profile"}
-                      width={36}
-                      height={36}
-                      className="w-full h-full object-cover"
-                    />
+                    {user.image ? (
+                      <image
+                        src={user.image}
+                        alt={user.name || "Profile"}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-pink-500/20 flex items-center justify-center text-pink-500 font-bold">
+                        {user.name?.charAt(0).toUpperCase()}
+                      </div>
+                    )}
                   </div>
                   <span className="text-white text-sm font-medium">{user.name}</span>
                 </div>
-                <button className="w-full px-4 py-2 rounded-lg text-sm font-medium bg-[#ff4d6d]/10 border border-[#ff4d6d]/30 text-pink-500 hover:bg-[#ff4d6d]/20 transition-all text-left">
+                <button
+                  onClick={handleLogout}
+                  className="w-full px-4 py-2 rounded-lg text-sm font-medium bg-[#ff4d6d]/10 border border-[#ff4d6d]/30 text-pink-500 hover:bg-[#ff4d6d]/20 transition-all text-left"
+                >
                   Logout
                 </button>
               </>
