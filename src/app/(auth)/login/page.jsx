@@ -2,36 +2,51 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import {
-  FiMail,
-  FiLock,
-  FiEye,
-  FiEyeOff,
-} from "react-icons/fi";
+import { useRouter } from "next/navigation";
+import { FiMail, FiLock, FiEye, FiEyeOff } from "react-icons/fi";
 import toast, { Toaster } from "react-hot-toast";
+import { authClient } from "@/lib/auth-client";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
     setLoading(true);
 
     try {
+      const { data, error } = await authClient.signIn.email({
+        email,
+        password,
+      });
+
+      if (error) {
+        toast.error(error.message || "Invalid email or password!");
+        return;
+      }
+
       toast.success("Login successful!");
+      router.push("/");
     } catch {
-      toast.error("Invalid email or password!");
+      toast.error("Something went wrong!");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleGoogle = () => {
-    toast.success("Google login coming soon!");
+  const handleGoogle = async () => {
+    try {
+      await authClient.signIn.social({
+        provider: "google",
+        callbackURL: "/",
+      });
+    } catch {
+      toast.error("Google login failed!");
+    }
   };
 
   return (
@@ -56,7 +71,6 @@ const LoginPage = () => {
         <form onSubmit={handleLogin} className="space-y-4">
           <div className="relative">
             <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-lg" />
-
             <input
               type="email"
               required
@@ -69,7 +83,6 @@ const LoginPage = () => {
 
           <div className="relative">
             <FiLock className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-lg" />
-
             <input
               type={showPass ? "text" : "password"}
               required
@@ -78,7 +91,6 @@ const LoginPage = () => {
               placeholder="Enter Your Password"
               className="w-full pl-12 pr-12 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm placeholder-white/20 outline-none focus:border-[#ff4d6d] focus:bg-[#ff4d6d]/5 transition-all"
             />
-
             <button
               type="button"
               onClick={() => setShowPass(!showPass)}
@@ -115,10 +127,7 @@ const LoginPage = () => {
 
         <p className="text-center text-white/35 text-sm mt-6">
           Don&apos;t have an account?{" "}
-          <Link
-            href="/register"
-            className="text-[#ff4d6d] font-medium hover:underline"
-          >
+          <Link href="/register" className="text-[#ff4d6d] font-medium hover:underline">
             Register
           </Link>
         </p>

@@ -1,4 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
+"use client";
+
+import Image from "next/image";
 import Link from "next/link";
 
 const PopularProducts = ({ product }) => {
@@ -9,11 +11,17 @@ const PopularProducts = ({ product }) => {
   return (
     <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-[#ff2d6b]/40 hover:shadow-[0_0_30px_rgba(255,45,107,0.1)] transition-all duration-300">
 
-      <div className="h-52 overflow-hidden">
-        <img
+      <div className="h-52 overflow-hidden relative">
+        <Image
           src={image}
           alt={name}
-          className="w-full h-full object-cover hover:scale-105 transition duration-300"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover hover:scale-105 transition duration-300"
+
+          onError={(e) => {
+            console.error(`Error loading image: ${image}`);
+          }}
         />
       </div>
 

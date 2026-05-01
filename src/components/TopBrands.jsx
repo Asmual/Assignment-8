@@ -10,8 +10,8 @@ const TopBrands = () => {
   return (
     <section className="bg-[#0d0b2e] py-20 px-6 overflow-hidden">
       {/* Section Header */}
-      <div className="text-center mb-16">
-        <p className="text-[#ff2d6b] text-xs font-bold uppercase tracking-[3px] mb-3 animate__animated animate__fadeIn">
+      <div className="text-center mb-16 border-t border-white/5">
+        <p className="text-[#ff2d6b] text-xs mt-10 font-bold uppercase tracking-[3px] mb-3 animate__animated animate__fadeIn">
           Our Partners
         </p>
         <h2 className="text-white text-4xl font-black mb-4">

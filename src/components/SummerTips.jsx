@@ -11,14 +11,14 @@ const SummerTips = () => {
       <div className="max-w-6xl mx-auto">
 
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <p className="text-[#ff2d6b] text-xs font-bold uppercase tracking-[3px] mb-3">
             Summer Essentials
           </p>
           <h2 className="text-white text-4xl font-black">
             Quick <span className="text-[#ff2d6b]">Care</span> Tips
           </h2>
-          <div className="w-20 h-1 bg-[#ff2d6b] mx-auto mt-4 rounded-full"></div>
+          <div className="w-15 h-1 bg-[#ff2d6b] mx-auto mt-4 rounded-full ml-139" ></div>
         </div>
 
         {/* Tips Grid */}
@@ -28,7 +28,7 @@ const SummerTips = () => {
               key={tip.id}
               className="relative group p-8 rounded-3xl bg-white/3 border border-white/10 hover:border-[#ff2d6b]/30 transition-all duration-500 flex flex-col items-center text-center"
             >
-              {/* Center Aligned Icon Box */}
+ 
               <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 group-hover:bg-[#ff2d6b]/20 transition-all duration-500">
                 {tip.icon}
               </div>

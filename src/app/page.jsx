@@ -13,10 +13,10 @@ export default function HomePage() {
         {/* Card Section */}
       <section className="bg-[#0d0b2e] py-16 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-black text-white text-center mb-2">
+          <h2 className="text-4xl font-black text-white text-center mb-2">
             Popular <span className="text-[#ff2d6b]">Products</span>
           </h2>
-          <p className="text-gray-400 text-center text-sm mb-10">
+          <p className="text-gray-400 text-center text-md mb-10">
             Top picks for this summer season
           </p>
 
