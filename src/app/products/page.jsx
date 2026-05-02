@@ -3,7 +3,7 @@ import PopularProducts from "@/components/PopularProducts";
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-[#080818] py-16 px-6">
+    <div className="min-h-screen bg-[#0f0d3b] py-16 px-6">
 
       {/* Header */}
       <div className="text-center mb-12">

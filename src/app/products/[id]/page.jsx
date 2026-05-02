@@ -11,7 +11,7 @@ export default async function Page({ params }) {
 
   return (
     <ProtectedRoute>
-      <div className="max-w-6xl mx-auto py-16 px-6">
+      <div>
         <ProductDetails product={product} />
       </div>
     </ProtectedRoute>

@@ -5,7 +5,7 @@ import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 const Footer = () => {
   return (
     <footer className="bg-[#08071f] border-t border-white/5 text-white">
-      {/* Main Grid Container */}
+    
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
         {/* Brand Section */}

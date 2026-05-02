@@ -17,19 +17,9 @@
     "stock": 60,
     "image": "/images/cap.jpg"
   },
+ 
   {
     "id": 3,
-    "name": "Comfort Summer Sandals",
-    "category": "Shoes",
-    "price": 1400,
-    "rating": 4.5,
-    "stock": 35,
-    "image": "/images/sandals.jpg"
-
-    
-  },
-  {
-    "id": 4,
     "name": "Insulated Water Bottle",
     "category": "Accessories",
     "price": 420,
@@ -38,6 +28,16 @@
     "image": "/images/bottle.jpg"
 
     
+  },
+   {
+    "id": 4,
+    "name": "Comfort Summer Sandals",
+    "category": "Shoes",
+    "price": 1400,
+    "rating": 4.5,
+    "stock": 35,
+    "image": "/images/sandal.jpg"
+
   },
   {
     "id": 5,

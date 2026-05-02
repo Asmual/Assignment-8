@@ -49,7 +49,7 @@ const RegisterPage = () => {
       }
 
       toast.success("Registration successful! Please login.");
-      router.push("/login");
+      router.push("/");
     } catch {
       toast.error("Something went wrong!");
     } finally {

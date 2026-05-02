@@ -10,7 +10,7 @@ const SummerTips = () => {
     <section className="bg-[#0d0b2e] py-20 px-6 border-t border-white/5">
       <div className="max-w-6xl mx-auto">
 
-        {/* Section Header */}
+
         <div className="text-center mb-12">
           <p className="text-[#ff2d6b] text-xs font-bold uppercase tracking-[3px] mb-3">
             Summer Essentials
@@ -21,7 +21,6 @@ const SummerTips = () => {
           <div className="w-15 h-1 bg-[#ff2d6b] mx-auto mt-4 rounded-full ml-139" ></div>
         </div>
 
-        {/* Tips Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {tips.map((tip) => (
             <div
@@ -33,17 +32,15 @@ const SummerTips = () => {
                 {tip.icon}
               </div>
 
-              {/* Title */}
               <h3 className="text-white font-bold text-xl mb-3 group-hover:text-[#ff2d6b] transition-colors">
                 {tip.title}
               </h3>
 
-              {/* Description */}
               <p className="text-gray-400 text-sm leading-relaxed">
                 {tip.desc}
               </p>
 
-              {/* Bottom Decorative Animated Line */}
+
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-[#ff2d6b] group-hover:w-1/2 transition-all duration-500 rounded-full"></div>
             </div>
           ))}
