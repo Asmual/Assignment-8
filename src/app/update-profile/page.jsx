@@ -28,7 +28,6 @@ export default function UpdateProfile() {
 
   const handleUpdate = async () => {
     if (!user) return;
-
     setLoading(true);
     try {
       const res = await fetch("/api/update-profile", {
@@ -55,44 +54,49 @@ export default function UpdateProfile() {
     }
   };
 
-
   if (pageLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0f0a1e]">
-        <p className="text-pink-600 text-xl font-semibold animate-pulse">Loading Profile...</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#080818]">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-[#ff2d6b] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-white/50">Loading...</p>
+        </div>
       </div>
     );
   }
 
-
   if (!user) return null;
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12" style={{ background: "#0f0a1e" }}>
-      <div className="w-full max-w-md rounded-2xl p-8" style={{ background: "#1a1035", border: "1px solid #2e1f5e" }}>
+    <div className="min-h-screen bg-[#080818] flex items-center justify-center px-4 py-12">
 
+      {/* Glow */}
+      <div className="fixed top-0 left-1/2 -translate-x-1/2  rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="w-full max-w-md bg-[#0B0B30] border border-white/10 rounded-2xl p-8 relative">
+
+        {/* Title */}
         <h2 className="text-3xl font-bold text-center text-white mb-8">
-          Update <span style={{ color: "#ec4899" }}>Information</span>
+          Update <span className="text-[#ff2d6b]">Information</span>
         </h2>
 
         {/* Name Input */}
         <div className="mb-5">
-          <label className="block text-sm font-medium mb-2" style={{ color: "#a78bfa" }}>
-            Name
+          <label className="block text-white/40 text-sm font-medium mb-2">
+            Full Name
           </label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter your name"
-            className="w-full px-4 py-3 rounded-xl text-white text-sm outline-none focus:ring-2 focus:ring-pink-500"
-            style={{ background: "#0f0a1e", border: "1px solid #2e1f5e" }}
+            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm placeholder-white/20 outline-none focus:border-[#ff2d6b] focus:bg-[#ff2d6b]/5 transition-all"
           />
         </div>
 
         {/* Photo URL Input */}
         <div className="mb-8">
-          <label className="block text-sm font-medium mb-2" style={{ color: "#a78bfa" }}>
+          <label className="block text-white/40 text-sm font-medium mb-2">
             Photo URL
           </label>
           <input
@@ -100,28 +104,26 @@ export default function UpdateProfile() {
             value={photoURL}
             onChange={(e) => setPhotoURL(e.target.value)}
             placeholder="Enter photo URL"
-            className="w-full px-4 py-3 rounded-xl text-white text-sm outline-none focus:ring-2 focus:ring-pink-500"
-            style={{ background: "#0f0a1e", border: "1px solid #2e1f5e" }}
+            className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white text-sm placeholder-white/20 outline-none focus:border-[#ff2d6b] focus:bg-[#ff2d6b]/5 transition-all"
           />
         </div>
 
-        {/* Update Button */}
+        {/* Buttons */}
         <button
           onClick={handleUpdate}
           disabled={loading}
-          className="w-full text-white font-bold py-3 rounded-xl transition duration-200 hover:opacity-90 mb-3 disabled:bg-gray-600"
-          style={{ background: "#ec4899" }}
+          className="w-full bg-[#ff2d6b] text-white font-bold py-3 rounded-xl hover:bg-[#e0255e] transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,45,107,0.4)] hover:-translate-y-0.5 mb-3 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading ? "Updating..." : "Update Information"}
         </button>
 
         <button
           onClick={() => router.push("/my-profile")}
-          className="w-full font-bold py-3 rounded-xl transition duration-200 hover:opacity-80"
-          style={{ background: "transparent", border: "1px solid #2e1f5e", color: "#a78bfa" }}
+          className="w-full border border-white/10 text-white/60 font-bold py-3 rounded-xl hover:bg-white/5 hover:text-white transition-all duration-300"
         >
           ← Back to Profile
         </button>
+
       </div>
     </div>
   );

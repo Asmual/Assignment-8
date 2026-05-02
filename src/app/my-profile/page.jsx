@@ -24,8 +24,11 @@ export default function MyProfile() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#0f0a1e]">
-        <p className="text-pink-500 text-lg font-semibold animate-pulse">Loading Profile...</p>
+      <div className="min-h-screen flex items-center justify-center bg-[#080818]">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-[#ff2d6b] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-white/50">Loading Profile...</p>
+        </div>
       </div>
     );
   }
@@ -33,74 +36,66 @@ export default function MyProfile() {
   const user = session?.user;
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12" style={{ background: "#0f0a1e" }}>
-      <div
-        className="w-full max-w-md rounded-2xl p-8"
-        style={{ background: "#1a1035", border: "1px solid #2e1f5e" }}
-      >
+    <div className="min-h-screen bg-[#080818] flex items-center justify-center px-4 py-4">
 
-        <h2 className="text-3xl font-bold text-center text-white mb-8">
-          My <span style={{ color: "#ec4899" }}>Profile</span>
+      {/* Glow */}
+      <div className="fixed top-0 left-1/2 -translate-x-1/2  rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="w-full max-w-md bg-[#0B0B30] border border-white/10 rounded-2xl p-8 relative">
+
+        {/* Title */}
+        <h2 className="text-3xl font-bold text-center text-white mb-5">
+          My <span className="text-[#ff2d6b]">Profile</span>
         </h2>
 
-        {/* Profile Image / Avatar Section */}
+        {/* Avatar */}
         <div className="flex flex-col items-center mb-8">
-          <div
-            className="w-24 h-24 rounded-full flex items-center justify-center text-3xl font-bold shadow-lg overflow-hidden"
-            style={{
-              background: "#0f0a1e",
-              border: "3px solid #ec4899",
-              color: "#ec4899"
-            }}
-          >
+          <div className="w-24 h-24 rounded-full overflow-hidden border-[3px] border-[#ff2d6b] shadow-[0_0_20px_rgba(255,45,107,0.3)]">
             {user?.image ? (
-              <img src={user.image} alt="Profile" className="w-full h-full object-cover" />
+              <img
+                src={user.image}
+                alt="Profile"
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
             ) : (
-              user?.name?.charAt(0).toUpperCase()
+              <div className="w-full h-full bg-[#ff2d6b]/20 flex items-center justify-center">
+                <span className="text-3xl font-bold text-[#ff2d6b]">
+                  {user?.name?.charAt(0).toUpperCase()}
+                </span>
+              </div>
             )}
           </div>
-          <h3 className="mt-4 text-xl font-semibold text-white">{user?.name}</h3>
-          <p className="text-sm" style={{ color: "#a78bfa" }}>{user?.email}</p>
+          <h3 className="mt-3 text-xl font-bold text-white">{user?.name}</h3>
         </div>
 
-        {/* Info Container */}
-        <div
-          className="rounded-xl mb-8 overflow-hidden"
-          style={{ background: "#0f0a1e", border: "1px solid #2e1f5e" }}
-        >
-          <div className="px-5 py-4 flex justify-between border-b border-[#2e1f5e]">
-            <span style={{ color: "#a78bfa" }} className="text-sm font-medium">Full Name</span>
+        {/* Info Box */}
+        <div className="bg-white/3 border border-white/10 rounded-xl overflow-hidden mb-6">
+          <div className="px-5 py-3 flex justify-between items-center border-b border-white/10">
+            <span className="text-white/40 text-sm font-medium">Full Name</span>
             <span className="text-white text-sm font-semibold">{user?.name}</span>
           </div>
-          <div className="px-5 py-4 flex justify-between">
-            <span style={{ color: "#a78bfa" }} className="text-sm font-medium">Email</span>
+          <div className="px-5 py-3 flex justify-between items-center">
+            <span className="text-white/40 text-sm font-medium">Email</span>
             <span className="text-white text-sm font-semibold">{user?.email}</span>
           </div>
         </div>
 
-        {/* Action Button */}
+        {/* Buttons */}
         <button
           onClick={() => router.push("/update-profile")}
-          className="w-full text-white font-bold py-3 rounded-xl transition duration-300 hover:opacity-90 shadow-lg"
-          style={{
-            background: "#ec4899",
-            boxShadow: "0 4px 14px 0 rgba(236, 72, 153, 0.3)"
-          }}
+          className="w-full bg-[#ff2d6b] text-white font-bold py-3 rounded-xl hover:bg-[#e0255e] transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,45,107,0.4)] hover:-translate-y-0.5 mb-3"
         >
           Update Information
         </button>
 
         <button
           onClick={() => router.push("/")}
-          className="w-full mt-4 font-bold py-3 rounded-xl transition duration-200 hover:bg-white/5"
-          style={{
-            background: "transparent",
-            border: "1px solid #2e1f5e",
-            color: "#a78bfa"
-          }}
+          className="w-full border border-white/10 text-white/60 font-bold py-3 rounded-xl hover:bg-white/5 hover:text-white transition-all duration-300"
         >
           ← Back to Home
         </button>
+
       </div>
     </div>
   );

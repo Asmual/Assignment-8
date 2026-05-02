@@ -40,11 +40,13 @@ const LoginPage = () => {
 
   const handleGoogle = async () => {
     try {
-      await authClient.signIn.social({
+      const result = await authClient.signIn.social({
         provider: "google",
         callbackURL: "/",
       });
-    } catch {
+      console.log("Google result:", result);
+    } catch (err) {
+      console.log("Google error:", err);
       toast.error("Google login failed!");
     }
   };

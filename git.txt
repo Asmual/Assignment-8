@@ -1,11 +1,11 @@
 echo "# Assignment-8" >> README.md
 git init
 git add .
-git commit -m "Products Page Complete-1"
+git commit -m "MyProfile page and Update page Complete"
 git branch -M main
 git remote add origin https://github.com/Asmual/Assignment-8.git
 git push -u origin main
 
 git add .
-git commit -m "Summer Tips & Top Brand Section Complete"
+git commit -m "implement Google social login using BetterAuth"
 git push -u origin main
