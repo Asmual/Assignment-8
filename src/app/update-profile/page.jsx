@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function UpdateProfile() {
   const [user, setUser] = useState(null);
@@ -36,19 +37,21 @@ export default function UpdateProfile() {
         body: JSON.stringify({
           email: user.email,
           name,
-          image: photoURL
+          image: photoURL,
         }),
       });
 
       if (res.ok) {
-        alert("Profile updated successfully!");
-        router.push("/my-profile");
+        toast.success("Profile updated successfully!");
+        setTimeout(() => {
+          router.push("/my-profile");
+        }, 1500);
       } else {
-        alert("Update failed!");
+        toast.error("Update failed!");
       }
     } catch (error) {
       console.error("Update Error:", error);
-      alert("Something went wrong!");
+      toast.error("Something went wrong!");
     } finally {
       setLoading(false);
     }
@@ -56,7 +59,7 @@ export default function UpdateProfile() {
 
   if (pageLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#080818]">
+      <div className="min-h-screen flex items-center justify-center bg-[#080836]">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-[#ff2d6b] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-white/50">Loading...</p>
@@ -68,19 +71,16 @@ export default function UpdateProfile() {
   if (!user) return null;
 
   return (
-    <div className="min-h-screen bg-[#080818] flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-[#05052b] flex items-center justify-center px-4 py-12">
 
-      {/* Glow */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2  rounded-full blur-[120px] pointer-events-none" />
+      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-150 h-75 bg-[#ff2d6b]/8 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="w-full max-w-md bg-[#0B0B30] border border-white/10 rounded-2xl p-8 relative">
 
-        {/* Title */}
         <h2 className="text-3xl font-bold text-center text-white mb-8">
           Update <span className="text-[#ff2d6b]">Information</span>
         </h2>
 
-        {/* Name Input */}
         <div className="mb-5">
           <label className="block text-white/40 text-sm font-medium mb-2">
             Full Name
@@ -94,7 +94,6 @@ export default function UpdateProfile() {
           />
         </div>
 
-        {/* Photo URL Input */}
         <div className="mb-8">
           <label className="block text-white/40 text-sm font-medium mb-2">
             Photo URL
@@ -108,7 +107,6 @@ export default function UpdateProfile() {
           />
         </div>
 
-        {/* Buttons */}
         <button
           onClick={handleUpdate}
           disabled={loading}

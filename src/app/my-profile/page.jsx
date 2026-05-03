@@ -24,7 +24,7 @@ export default function MyProfile() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#080818]">
+      <div className="min-h-screen flex items-center justify-center bg-[#0b0b38]">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-[#ff2d6b] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-white/50">Loading Profile...</p>
@@ -36,14 +36,13 @@ export default function MyProfile() {
   const user = session?.user;
 
   return (
-    <div className="min-h-screen bg-[#080818] flex items-center justify-center px-4 py-4">
+    <div className="min-h-screen bg-[#0b0b38] flex items-center justify-center px-4 py-4">
 
-      {/* Glow */}
+
       <div className="fixed top-0 left-1/2 -translate-x-1/2  rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="w-full max-w-md bg-[#0B0B30] border border-white/10 rounded-2xl p-8 relative">
+      <div className="w-full max-w-md bg-[#080836] border border-white/10 rounded-2xl p-8 relative">
 
-        {/* Title */}
         <h2 className="text-3xl font-bold text-center text-white mb-5">
           My <span className="text-[#ff2d6b]">Profile</span>
         </h2>

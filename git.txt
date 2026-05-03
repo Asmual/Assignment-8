@@ -1,7 +1,7 @@
 echo "# Assignment-8" >> README.md
 git init
 git add .
-git commit -m "Final push"
+git commit -m "Some Design Correction"
 git branch -M main
 git remote add origin https://github.com/Asmual/Assignment-8.git
 git push -u origin main

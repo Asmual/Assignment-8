@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FiMail, FiLock, FiEye, FiEyeOff } from "react-icons/fi";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
 
 const LoginPage = () => {
@@ -19,7 +19,7 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
-      const { data, error } = await authClient.signIn.email({
+      const { error } = await authClient.signIn.email({
         email,
         password,
       });
@@ -30,7 +30,9 @@ const LoginPage = () => {
       }
 
       toast.success("Login successful!");
-      router.push("/");
+      setTimeout(() => {
+        router.push("/");
+      }, 1500);
     } catch {
       toast.error("Something went wrong!");
     } finally {
@@ -40,20 +42,17 @@ const LoginPage = () => {
 
   const handleGoogle = async () => {
     try {
-      const result = await authClient.signIn.social({
+      await authClient.signIn.social({
         provider: "google",
         callbackURL: "/",
       });
-      console.log("Google result:", result);
-    } catch (err) {
-      console.log("Google error:", err);
+    } catch {
       toast.error("Google login failed!");
     }
   };
 
   return (
     <div className="min-h-screen bg-[#080818] flex items-center justify-center px-4 py-12">
-      <Toaster position="top-center" />
 
       <div className="w-full max-w-md bg-[#0f0f28] border border-white/8 rounded-2xl px-8 py-10">
         <div className="flex justify-center mb-8">
